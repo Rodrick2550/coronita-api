@@ -29,7 +29,7 @@ public class UserServiceImpl implements IUserService {
         User user = this.findOneAndEnsureExist(id);
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toCreateUserResponse(user))
+                .data(userMapper.toCreateUserResponse(user))
                 .message("User retrieved")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)
@@ -44,10 +44,10 @@ public class UserServiceImpl implements IUserService {
 
         //request.setPassword(encodePassword(request.getPassword()));
 
-        User user = userRepository.save(userMapper.INSTANCE.toUser(request));
+        User user = userRepository.save(userMapper.toUser(request));
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toCreateUserResponse(user))
+                .data(userMapper.toCreateUserResponse(user))
                 .message("User created")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.CREATED)
@@ -68,7 +68,7 @@ public class UserServiceImpl implements IUserService {
         User updatedUser = userRepository.save(user);
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toUpdateUserResponse(updatedUser))
+                .data(userMapper.toUpdateUserResponse(updatedUser))
                 .message("Data user updated")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)
