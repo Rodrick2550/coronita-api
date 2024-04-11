@@ -1,4 +1,4 @@
-package com.example.coronitaapi.web.dtos.requests;
+package com.example.coronitaapi.web.dtos.responses;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -9,8 +9,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-
-public class CreateAppointmentRequest {
+public class CreateAppointmentResponse {
 
     private String vehicle;
 

@@ -26,6 +26,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public BaseResponse get(Long id) {
+
         User user = this.findOneAndEnsureExist(id);
 
         return BaseResponse.builder()
@@ -100,7 +101,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Optional<User> getByEmail(String email) {
-        return Optional.empty();
+        return userRepository.getByEmail(email);
     }
 
 
