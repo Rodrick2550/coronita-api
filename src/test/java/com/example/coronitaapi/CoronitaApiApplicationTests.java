@@ -27,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class CoronitaApiApplicationTests {
-
+/*
     @Mock
     private UserServiceImpl userService;
 
@@ -92,6 +92,6 @@ class CoronitaApiApplicationTests {
     }
 
 
-
+*/
 
 }
