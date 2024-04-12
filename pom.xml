@@ -14,6 +14,7 @@
     <name>coronita-api</name>
     <description>coronita-api</description>
     <properties>
+        <start-class>com.example.coronitaapi.CoronitaApiApplication</start-class>
         <java.version>17</java.version>
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <org.projectlombok.version>1.18.30</org.projectlombok.version>
@@ -97,10 +98,18 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <mainClass>com.example.coronitaapi.CoronitaApiApplication</mainClass>
+                    <layout>JAR</layout>
                     <source>1.8</source>
                     <target>1.8</target>
                     <annotationProcessorPaths>
