@@ -9,6 +9,7 @@ import com.example.coronitaapi.web.dtos.responses.BaseResponse;
 import com.example.coronitaapi.web.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -26,10 +27,11 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public BaseResponse get(Long id) {
+
         User user = this.findOneAndEnsureExist(id);
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toCreateUserResponse(user))
+                .data(userMapper.toCreateUserResponse(user))
                 .message("User retrieved")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)
@@ -42,12 +44,12 @@ public class UserServiceImpl implements IUserService {
             throw new RuntimeException("User already exists");
         }
 
-        //request.setPassword(encodePassword(request.getPassword()));
+        request.setPassword(encodePassword(request.getPassword()));
 
-        User user = userRepository.save(userMapper.INSTANCE.toUser(request));
+        User user = userRepository.save(userMapper.toUser(request));
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toCreateUserResponse(user))
+                .data(userMapper.toCreateUserResponse(user))
                 .message("User created")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.CREATED)
@@ -68,7 +70,7 @@ public class UserServiceImpl implements IUserService {
         User updatedUser = userRepository.save(user);
 
         return BaseResponse.builder()
-                .data(userMapper.INSTANCE.toUpdateUserResponse(updatedUser))
+                .data(userMapper.toUpdateUserResponse(updatedUser))
                 .message("Data user updated")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)
@@ -100,13 +102,13 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public Optional<User> getByEmail(String email) {
-        return Optional.empty();
+        return userRepository.getByEmail(email);
     }
 
 
-    /*private String encodePassword(String password) {
+    private String encodePassword(String password) {
         return new BCryptPasswordEncoder().encode(password);
     }
 
-     */
+
 }

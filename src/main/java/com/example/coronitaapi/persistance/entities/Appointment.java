@@ -1,6 +1,7 @@
 package com.example.coronitaapi.persistance.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,15 +18,16 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String vehicle;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    @Column
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String dateOfAppointment;
 
-    @Column(nullable = false)
-    private LocalTime hour;
+    @Column
+    @JsonFormat(pattern = "HH:mm")
+    private String hour;
 
     @Column
     private String instructions;

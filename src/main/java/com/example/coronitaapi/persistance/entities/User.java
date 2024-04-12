@@ -28,7 +28,7 @@ public class User {
     @Email
     private String email;
 
-    @Column(nullable = false, length = 12)
+    @Column(nullable = false, length = 255)
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
