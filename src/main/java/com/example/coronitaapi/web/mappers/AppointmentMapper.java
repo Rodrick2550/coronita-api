@@ -15,8 +15,7 @@ public interface AppointmentMapper {
     CreateAppointmentResponse toCreateAppointmentResponse(Appointment
                                                           appointment);
 
-    Appointment toAppointment(CreateAppointmentRequest
-                              createAppointmentRequest);
+    Appointment toAppointment(CreateAppointmentRequest createAppointmentRequest);
 
     UpdateAppointmentResponse toUpdateAppointmentResponse(Appointment
                                                           appointment);

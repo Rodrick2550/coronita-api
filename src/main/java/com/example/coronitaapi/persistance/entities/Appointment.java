@@ -18,16 +18,16 @@ public class Appointment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String vehicle;
 
-    @Column(nullable = false)
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    private Date dateOfAppointment;
+    @Column
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String dateOfAppointment;
 
-    @Column(nullable = false)
+    @Column
     @JsonFormat(pattern = "HH:mm")
-    private LocalTime hour;
+    private String hour;
 
     @Column
     private String instructions;

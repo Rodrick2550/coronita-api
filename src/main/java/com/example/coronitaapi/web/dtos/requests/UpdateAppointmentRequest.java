@@ -11,13 +11,13 @@ import java.util.Date;
 @Setter
 public class UpdateAppointmentRequest {
 
-    private String vehicle;
-
-    /*@JsonFormat(pattern = "yyyy-MM-dd")
-    private Date dateOfAppointment;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private String dateOfAppointment;
 
     @JsonFormat(pattern = "HH:mm")
-    private LocalTime hour;
-    */
+    private String hour;
+
     private String instructions;
+
+    private String vehicle;
 }

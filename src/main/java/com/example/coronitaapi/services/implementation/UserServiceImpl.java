@@ -9,6 +9,7 @@ import com.example.coronitaapi.web.dtos.responses.BaseResponse;
 import com.example.coronitaapi.web.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -43,7 +44,7 @@ public class UserServiceImpl implements IUserService {
             throw new RuntimeException("User already exists");
         }
 
-        //request.setPassword(encodePassword(request.getPassword()));
+        request.setPassword(encodePassword(request.getPassword()));
 
         User user = userRepository.save(userMapper.toUser(request));
 
@@ -105,9 +106,9 @@ public class UserServiceImpl implements IUserService {
     }
 
 
-    /*private String encodePassword(String password) {
+    private String encodePassword(String password) {
         return new BCryptPasswordEncoder().encode(password);
     }
 
-     */
+
 }

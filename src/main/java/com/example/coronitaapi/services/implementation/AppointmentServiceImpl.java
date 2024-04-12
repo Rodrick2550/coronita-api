@@ -39,8 +39,11 @@ public class AppointmentServiceImpl implements IAppointmentService {
 
     @Override
     public BaseResponse create(CreateAppointmentRequest request) {
-
-
+        System.out.println(appointmentMapper.toAppointment(request).getDateOfAppointment());
+        System.out.println(request.getDateOfAppointment());
+        System.out.println(request.getHour());
+        System.out.println(request.getInstructions());
+        System.out.println(request.getVehicle());
 
         Appointment appointment = appointmentRepository.save(appointmentMapper.toAppointment(request));
 
