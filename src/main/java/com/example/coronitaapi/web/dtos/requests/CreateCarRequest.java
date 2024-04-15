@@ -1,5 +1,6 @@
 package com.example.coronitaapi.web.dtos.requests;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,8 +13,8 @@ public class CreateCarRequest {
 
 
     private String model;
-
-    private String year;
+    //@JsonFormat(pattern = "yyyy")
+    private String yearOfModel;
 
     private String color;
 }

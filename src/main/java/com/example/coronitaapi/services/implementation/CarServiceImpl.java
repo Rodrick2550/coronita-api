@@ -54,13 +54,13 @@ public class CarServiceImpl implements ICarService {
 
         car.setBrand(updateCarRequest.getBrand());
         car.setModel(updateCarRequest.getModel());
-        car.setYear(updateCarRequest.getYear());
+        car.setYearOfModel(updateCarRequest.getYearOfModel());
         car.setColor(updateCarRequest.getColor());
 
         car = carRepository.save(car);
 
         return BaseResponse.builder()
-                .data(carMapper.toCreateCarResponse(car))
+                .data(carMapper.toUpdateCarResponse(car))
                 .message("Car updated")
                 .success(Boolean.TRUE)
                 .httpStatus(HttpStatus.OK)

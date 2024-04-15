@@ -1,6 +1,7 @@
 package com.example.coronitaapi.persistance.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,14 +23,15 @@ public class Car {
     private String model;
 
     @Column(nullable = false)
-    private String year;
+    //@JsonFormat(pattern = "yyyy")
+    private String yearOfModel;
 
 
     @Column(nullable = false)
     private String color;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 }
