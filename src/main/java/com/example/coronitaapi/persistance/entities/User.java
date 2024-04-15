@@ -41,5 +41,5 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Car> cars;
+    private List<Car>cars;
 }
